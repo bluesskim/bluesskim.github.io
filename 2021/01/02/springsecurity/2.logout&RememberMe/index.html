@@ -1,0 +1,284 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  <title>Spring Security 기본 API와 Filter - (2) | Aaron</title>
+  <meta name="author" content="aaron">
+  
+  <meta name="description" content="Logout, LogoutFilter Logout 관련 메소드
+
+
+
+Method
+내용
+
+
+
+logoutUrl(String logoutUrl)
+로그아웃 처리 URL
+
+
+logoutSuccessUrl(String logoutSuccessUrl)
+로그아웃 성공 후 이동페이지">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Spring Security 기본 API와 Filter - (2)"/>
+  <meta property="og:site_name" content="Aaron"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link rel="shortcut icon" href="/favicon.png">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
+  
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Aaron</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/null">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article id="post-springsecurity/2.logout&amp;RememberMe" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2021-01-01T15:00:00.000Z"><a href="/2021/01/02/springsecurity/2.logout&RememberMe/">2021-01-02</a></time>
+      
+      
+  
+    <h1 class="p-name title" itemprop="headline name">Spring Security 기본 API와 Filter - (2)</h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <h2 id="Logout-LogoutFilter"><a href="#Logout-LogoutFilter" class="headerlink" title="Logout, LogoutFilter "></a>Logout, LogoutFilter </h2><p><strong>Logout 관련 메소드</strong></p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>logoutUrl(<strong>String</strong> logoutUrl)</td>
+<td>로그아웃 처리 URL</td>
+</tr>
+<tr>
+<td>logoutSuccessUrl(<strong>String</strong> logoutSuccessUrl)</td>
+<td>로그아웃 성공 후 이동페이지</td>
+</tr>
+<tr>
+<td>deleteCookies(<strong>String…</strong> cookieNamesToClear)</td>
+<td>로그아웃 후 쿠키 삭제</td>
+</tr>
+<tr>
+<td>addLogoutHandler(<strong>LogoutHandler</strong> logoutHandler)</td>
+<td>로그아웃 핸들러</td>
+</tr>
+<tr>
+<td>logoutSuccessHandler(<strong>LogoutSuccessHandler</strong> logoutSuccessHandler)</td>
+<td>로그아웃 성공 후 핸들러</td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    http</span><br><span class="line">            .logout()</span><br><span class="line">            .logoutUrl(<span class="string">&quot;/logout&quot;</span>)</span><br><span class="line">            .logoutSuccessUrl(<span class="string">&quot;/login&quot;</span>)</span><br><span class="line">            .deleteCookies(<span class="string">&quot;remember-me&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<p><strong>LogOut 프로세스 &amp; LogoutFilter</strong></p>
+<p><img src="/image/spring-security/LogoutFilter.png"></p>
+<br>
+
+<p><strong>기타 : Get 방식 로그아웃</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping(&quot;/logout&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">logout</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Get Authentication</span></span><br><span class="line">    Authentication authentication = SecurityContextHolder</span><br><span class="line">            .getContext()</span><br><span class="line">            .getAuthentication();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Authentication null 또는 비인증 객체가 아닐경우</span></span><br><span class="line">    <span class="keyword">if</span> (authentication != <span class="keyword">null</span> &amp;&amp; !(authentication <span class="keyword">instanceof</span> AnonymousAuthenticationToken)) &#123;</span><br><span class="line">        Member member = (Member) authentication.getPrincipal();</span><br><span class="line">        <span class="keyword">new</span> SecurityContextLogoutHandler().logout(request, response, authentication);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;redirect:/login&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h2 id="Remember-Me-인증"><a href="#Remember-Me-인증" class="headerlink" title="Remember Me 인증"></a>Remember Me 인증</h2><ul>
+<li>세션이 만료되고 웹 브라우저가 종료된 후에도 어플리케이션이 사용자를 기억하는 기능.</li>
+<li>Remember-Me 쿠키에 대한 Http 요청을 확인한 후 토큰 기반 인증을 사용해 유효성을 검사하고 토큰이 검증되면 사용자는 로그인 된다,</li>
+<li>사용자 라이프 사이클 <ul>
+<li>인증성공(Remember-Me 쿠키 설정)</li>
+<li>인증실패(쿠키가 존재하면 쿠키 무효화)</li>
+<li>로그아웃(쿠키가 존재하면 쿠키 무효화)</li>
+</ul>
+</li>
+</ul>
+<br>
+
+<p><strong>RememberMe 메소드</strong></p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>rememberMe()</td>
+<td>rememberMe 기능이 작동함</td>
+</tr>
+<tr>
+<td>rememberMeParameter(<strong>String</strong> rememberMeParameter)</td>
+<td>파라미터명(Default: remember-me)</td>
+</tr>
+<tr>
+<td>tokenValiditySeconds(<strong>int</strong> tokenValiditySeconds)</td>
+<td>토큰 유효 기간(Default: 14일)</td>
+</tr>
+<tr>
+<td>alwaysRemember(<strong>boolean</strong> alwaysRemember)</td>
+<td>rememberMe 기능이 활성화 되지 않아도 항상 실행(Default: false)</td>
+</tr>
+<tr>
+<td>userDetailsService(<strong>UserDetailsService</strong> userDetailsService)</td>
+<td>사용자 정보를 DB에서 가져오 오는 서비스 등록</td>
+</tr>
+</tbody></table>
+<br>
+
+<p><strong>Remember Me 인증</strong></p>
+<p><img src="image/1-10.png"></p>
+<p><strong>RememberMeAuthenticationFilter</strong></p>
+<p><img src="image/1-11.png"></p>
+<br>  
+      
+    </div>
+    <footer>
+      
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/spring-security/">spring-security</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">Comments</h1>
+
+  
+      <div id="fb-root"></div>
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=123456789012345";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<div class="fb-comments" data-href="http://example.com/2021/01/02/springsecurity/2.logout&amp;RememberMe/index.html" data-num-posts="5" data-width="840" data-colorscheme="light"></div>
+      
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="as_sitesearch" value="example.com">
+  </form>
+</div>
+
+
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/java/">java</a><small>2</small></li>
+  
+    <li><a href="/tags/spring-security/">spring-security</a><small>2</small></li>
+  
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2021 aaron
+  
+</div>
+<div class="clearfix"></div></footer>
+  
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+
+
+<script src="/js/gallery.js"></script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+<script>
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>
