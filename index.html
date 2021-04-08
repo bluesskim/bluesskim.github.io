@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="kr">
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -24,7 +24,7 @@
 <meta property="og:title" content="Aaron">
 <meta property="og:url" content="http://example.com/index.html">
 <meta property="og:site_name" content="Aaron">
-<meta property="og:locale">
+<meta property="og:locale" content="ko_KR">
 <meta property="article:author" content="aaron">
 <meta name="twitter:card" content="summary">
 
@@ -33,7 +33,7 @@
 
 
 
-<meta name="hexo-config-page" content="{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:true,&quot;isPost&quot;:false,&quot;lang&quot;:&quot;kr&quot;}">
+<meta name="hexo-config-page" content="{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:true,&quot;isPost&quot;:false,&quot;lang&quot;:&quot;ko&quot;}">
 <meta name="hexo-config-calendar" content="">
 <title>Aaron</title><script data-pjax src="/js/load-config.js"></script>
   
@@ -54,6 +54,9 @@
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
@@ -74,6 +77,14 @@
 
 
 
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="home fa-fw"></i>홈</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>태그</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>카테고리</a></li>
+  </ul>
+</nav>
 
 
 
@@ -92,10 +103,10 @@
     <div class="sidebar-inner sidebar-overview-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
-          Table of Contents
+          목차
         </li>
         <li class="sidebar-nav-overview">
-          Overview
+          흝어보기
         </li>
       </ul>
 
@@ -115,12 +126,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives">
           <span class="site-state-item-count">5</span>
-          <span class="site-state-item-name">posts</span>
+          <span class="site-state-item-name">포스트</span>
         </a>
       </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">카테고리</span></a>
+      </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">2</span>
-        <span class="site-state-item-name">tags</span>
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">태그</span></a>
       </div>
   </nav>
 </div>
@@ -157,7 +176,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/24/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/08/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -170,7 +189,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/02/24/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
+          <a href="/2021/04/08/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
         </h2>
 
         <div class="post-meta-container">
@@ -179,9 +198,9 @@
       <span class="post-meta-item-icon">
         <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Posted on</span>
+      <span class="post-meta-item-text">작성일</span>
 
-      <time title="Created: 2021-02-24 10:01:17" itemprop="dateCreated datePublished" datetime="2021-02-24T10:01:17+09:00">2021-02-24</time>
+      <time title="Post created: 2021-04-08 13:57:49" itemprop="dateCreated datePublished" datetime="2021-04-08T13:57:49+09:00">2021-04-08</time>
     </span>
 
   
@@ -202,12 +221,14 @@
 
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
 <h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/04/08/hello-world/#more" rel="contents">
+                더 읽어보기 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -255,16 +276,16 @@
       <span class="post-meta-item-icon">
         <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Posted on</span>
+      <span class="post-meta-item-text">작성일</span>
 
-      <time title="Created: 2021-01-02 00:00:00" itemprop="dateCreated datePublished" datetime="2021-01-02T00:00:00+09:00">2021-01-02</time>
+      <time title="Post created: 2021-01-02 00:00:00" itemprop="dateCreated datePublished" datetime="2021-01-02T00:00:00+09:00">2021-01-02</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-02-24 16:08:37" itemprop="dateModified" datetime="2021-02-24T16:08:37+09:00">2021-02-24</time>
+        <time title="Updated at: 2021-02-24 16:08:37" itemprop="dateModified" datetime="2021-02-24T16:08:37+09:00">2021-02-24</time>
       </span>
 
   
@@ -283,6 +304,125 @@
 <li>관리자 시스템 구 </li>
 </ul>
 
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/01/02/spring-security-demo/#more" rel="contents">
+                더 읽어보기 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/02/springsecurity/1.httpBasic&FormLogin/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="aaron">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Aaron">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/01/02/springsecurity/1.httpBasic&FormLogin/" class="post-title-link" itemprop="url">Spring Security 기본 API와 Filter - (1)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">작성일</span>
+
+      <time title="Post created: 2021-01-02 00:00:00" itemprop="dateCreated datePublished" datetime="2021-01-02T00:00:00+09:00">2021-01-02</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Updated at: 2021-04-08 15:42:24" itemprop="dateModified" datetime="2021-04-08T15:42:24+09:00">2021-04-08</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/SpringFramWork/" itemprop="url" rel="index"><span itemprop="name">SpringFramWork</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Spring-Security-의존성-추가"><a href="#Spring-Security-의존성-추가" class="headerlink" title="Spring Security 의존성 추가"></a>Spring Security 의존성 추가</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-security<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<p><strong>의존성 추가 시 일어나는 일들</strong></p>
+<ul>
+<li>서버가 기동되면 스프링 시큐리티의 초기화 작업 및 보안 설정이 이루어진다.</li>
+<li>별도의 설정이나 구현을 하지 않아도 기본적인 웹 보안 기능이 현재 시스템에 연동되어 작동한다.<ol>
+<li>모든 요청은 인증이 되어야 자원에 접근이 가능하다.</li>
+<li>인증 방식은 폼 로그인 방식과 httpBasic 로그인 방식을 제공한다.</li>
+<li>기본 로그인 페이지 제공한다.</li>
+<li>기본 계정 한 개 제공한다. <br> <strong>username</strong> : user / <strong>password</strong> : 랜덤 문자열</li>
+</ol>
+</li>
+</ul>
+<p><strong>의존성 추가 시 일어나는 문제점</strong></p>
+<ul>
+<li>계정 추가, 권한 추가, DB 연동 등</li>
+<li>기본적인 보안 기능 외에 시스템에서 필요로 하는 더 세부적이고 추가적인 보안기능이 필요 하다.</li>
+</ul>
+<br>
+
+
+<p><strong>스프링 시큐리티 사용자 정의 보안 설정</strong></p>
+<p><img src="../../image/spring-security/1-1.png"></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/01/02/springsecurity/1.httpBasic&FormLogin/#more" rel="contents">
+                더 읽어보기 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -330,16 +470,16 @@
       <span class="post-meta-item-icon">
         <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Posted on</span>
+      <span class="post-meta-item-text">작성일</span>
 
-      <time title="Created: 2021-01-02 00:00:00" itemprop="dateCreated datePublished" datetime="2021-01-02T00:00:00+09:00">2021-01-02</time>
+      <time title="Post created: 2021-01-02 00:00:00" itemprop="dateCreated datePublished" datetime="2021-01-02T00:00:00+09:00">2021-01-02</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-08 10:22:56" itemprop="dateModified" datetime="2021-04-08T10:22:56+09:00">2021-04-08</time>
+        <time title="Updated at: 2021-04-08 10:22:56" itemprop="dateModified" datetime="2021-04-08T10:22:56+09:00">2021-04-08</time>
       </span>
 
   
@@ -391,408 +531,14 @@
 
 <p><strong>기타 : Get 방식 로그아웃</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping(&quot;/logout&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">logout</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Get Authentication</span></span><br><span class="line">    Authentication authentication = SecurityContextHolder</span><br><span class="line">            .getContext()</span><br><span class="line">            .getAuthentication();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Authentication null 또는 비인증 객체가 아닐경우</span></span><br><span class="line">    <span class="keyword">if</span> (authentication != <span class="keyword">null</span> &amp;&amp; !(authentication <span class="keyword">instanceof</span> AnonymousAuthenticationToken)) &#123;</span><br><span class="line">        Member member = (Member) authentication.getPrincipal();</span><br><span class="line">        <span class="keyword">new</span> SecurityContextLogoutHandler().logout(request, response, authentication);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;redirect:/login&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<br>
-
-<h2 id="Remember-Me-인증"><a href="#Remember-Me-인증" class="headerlink" title="Remember Me 인증"></a>Remember Me 인증</h2><ul>
-<li>세션이 만료되고 웹 브라우저가 종료된 후에도 어플리케이션이 사용자를 기억하는 기능.</li>
-<li>Remember-Me 쿠키에 대한 Http 요청을 확인한 후 토큰 기반 인증을 사용해 유효성을 검사하고 토큰이 검증되면 사용자는 로그인 된다,</li>
-<li>사용자 라이프 사이클 <ul>
-<li>인증성공(Remember-Me 쿠키 설정)</li>
-<li>인증실패(쿠키가 존재하면 쿠키 무효화)</li>
-<li>로그아웃(쿠키가 존재하면 쿠키 무효화)</li>
-</ul>
-</li>
-</ul>
-<br>
-
-<p><strong>RememberMe 메소드</strong></p>
-<table>
-<thead>
-<tr>
-<th>Method</th>
-<th>내용</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>rememberMe()</td>
-<td>rememberMe 기능이 작동함</td>
-</tr>
-<tr>
-<td>rememberMeParameter(<strong>String</strong> rememberMeParameter)</td>
-<td>파라미터명(Default: remember-me)</td>
-</tr>
-<tr>
-<td>tokenValiditySeconds(<strong>int</strong> tokenValiditySeconds)</td>
-<td>토큰 유효 기간(Default: 14일)</td>
-</tr>
-<tr>
-<td>alwaysRemember(<strong>boolean</strong> alwaysRemember)</td>
-<td>rememberMe 기능이 활성화 되지 않아도 항상 실행(Default: false)</td>
-</tr>
-<tr>
-<td>userDetailsService(<strong>UserDetailsService</strong> userDetailsService)</td>
-<td>사용자 정보를 DB에서 가져오 오는 서비스 등록</td>
-</tr>
-</tbody></table>
-<br>
-
-<p><strong>Remember Me 인증</strong></p>
-<p><img src="image/1-10.png"></p>
-<p><strong>RememberMeAuthenticationFilter</strong></p>
-<p><img src="image/1-11.png"></p>
-<br>  
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/02/springsecurity/1.httpBasic&FormLogin/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="aaron">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Aaron">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/01/02/springsecurity/1.httpBasic&FormLogin/" class="post-title-link" itemprop="url">Spring Security 기본 API와 Filter - (1)</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-01-02 00:00:00" itemprop="dateCreated datePublished" datetime="2021-01-02T00:00:00+09:00">2021-01-02</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-08 14:03:08" itemprop="dateModified" datetime="2021-04-08T14:03:08+09:00">2021-04-08</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="Spring-Security-의존성-추가"><a href="#Spring-Security-의존성-추가" class="headerlink" title="Spring Security 의존성 추가"></a>Spring Security 의존성 추가</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-security<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<br>
-
-<p><strong>의존성 추가 시 일어나는 일들</strong></p>
-<ul>
-<li>서버가 기동되면 스프링 시큐리티의 초기화 작업 및 보안 설정이 이루어진다.</li>
-<li>별도의 설정이나 구현을 하지 않아도 기본적인 웹 보안 기능이 현재 시스템에 연동되어 작동한다.<ol>
-<li>모든 요청은 인증이 되어야 자원에 접근이 가능하다.</li>
-<li>인증 방식은 폼 로그인 방식과 httpBasic 로그인 방식을 제공한다.</li>
-<li>기본 로그인 페이지 제공한다.</li>
-<li>기본 계정 한 개 제공한다. <br> <strong>username</strong> : user / <strong>password</strong> : 랜덤 문자열</li>
-</ol>
-</li>
-</ul>
-<p><strong>의존성 추가 시 일어나는 문제점</strong></p>
-<ul>
-<li>계정 추가, 권한 추가, DB 연동 등</li>
-<li>기본적인 보안 기능 외에 시스템에서 필요로 하는 더 세부적이고 추가적인 보안기능이 필요 하다.</li>
-</ul>
-<br>
-
-
-<p><strong>스프링 시큐리티 사용자 정의 보안 설정</strong></p>
-<p><img src="../../image/spring-security/1-1.png"></p>
-<table>
-<thead>
-<tr>
-<th>인증 API</th>
-<th>인가 API</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>formLogin()</td>
-<td>authorizeRequests()</td>
-</tr>
-<tr>
-<td>logout()</td>
-<td>antMatchers(/admin)</td>
-</tr>
-<tr>
-<td>csrf()</td>
-<td>hasRole(ROLE_USER)</td>
-</tr>
-<tr>
-<td>httpBasic()</td>
-<td>permitAll()</td>
-</tr>
-<tr>
-<td>SessionManagement()</td>
-<td>authenticated()</td>
-</tr>
-<tr>
-<td>RememberMe()</td>
-<td>fullyAuthenticated()</td>
-</tr>
-<tr>
-<td>ExceptionHandling()</td>
-<td>access(hasRole(ROLE_USER)</td>
-</tr>
-<tr>
-<td>addFilter()</td>
-<td>denyAll()</td>
-</tr>
-</tbody></table>
-<br>
-
-<p><strong>SecurityConfig</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableWebSecurity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SecurityConfig</span> <span class="keyword">extends</span> <span class="title">WebSecurityConfigurerAdapter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123; </span><br><span class="line">	http</span><br><span class="line">		.authorizeRequests()			</span><br><span class="line">		.anyRequest().authenticated()		</span><br><span class="line">	.and()</span><br><span class="line">		.formLogin(); 			</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<br>
-
-<h2 id="HTTP-Basic-인증과-BasicAuthenticationFilter"><a href="#HTTP-Basic-인증과-BasicAuthenticationFilter" class="headerlink" title="HTTP Basic 인증과 BasicAuthenticationFilter"></a>HTTP Basic 인증과 BasicAuthenticationFilter</h2><p><strong>HTTP Basic 인증</strong></p>
-<ul>
-<li>HTTP는 자체적인 인증 관련 기능을 제공하며 HTTP 표준에 정의된 가장 단순한 인증 기법이다.</li>
-<li>Session Cookie(JSESSIONID) 사용하지 않고, 간단한 설정과 Stateless가 장점 이다.</li>
-<li>보호자원 접근시 서버가 클라이언트에게 401 Unauthorized 응답과 함께 WWW-Authenticate header를 기술해서 인증요구를 보낸다.</li>
-<li>Client는 ID:Password 값을 Base64로 Encoding한 문자열을 Authorization Header에 추가한 뒤 Server에게 Resource를 요청한다.<ul>
-<li>Authorization: Basic cmVzdDpyZXN0</li>
-</ul>
-</li>
-<li>ID, Password가 Base64로 Encoding되어 있어 ID, Password가 외부에 쉽게 노출되는 구조이기 때문에 SSL(Secure Sockets Layer)이나 TLS(Transport Layer Security)는 필수이다.</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">	http.httpBasic();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<br>
-
-<p><strong>BasicAuthenticationFilter</strong></p>
-<p><img src="../../image/spring-security/BasicAuthenticationFilter.png"></p>
-<blockquote>
-<blockquote>
-<p>이후 해당 필터를 상속 받아 JWT를 이용한 인증/인가 API 구현할 예정이다.<br><a href="bluesskim.github.io">JWT를 이용한 인증/인가 API 구현</a></p>
-</blockquote>
-</blockquote>
-<br>
-
-
-<h2 id="FormLogin-인증과-UsernamePasswordAuthenticationFilter"><a href="#FormLogin-인증과-UsernamePasswordAuthenticationFilter" class="headerlink" title="FormLogin 인증과 UsernamePasswordAuthenticationFilter"></a>FormLogin 인증과 UsernamePasswordAuthenticationFilter</h2><p><strong>formLogin 관련 메소드</strong></p>
-<table>
-<thead>
-<tr>
-<th>Method</th>
-<th>내용</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>loginPage(<strong>String</strong> loginPage)</td>
-<td>사용자 정의 로그인 페이지</td>
-</tr>
-<tr>
-<td>defaultSuccessUrl(<strong>String</strong> defaultSuccessUrl)</td>
-<td>로그인 성공 후 이동 페이지</td>
-</tr>
-<tr>
-<td>failureUrl(<strong>String</strong> authenticationFailureUrl)</td>
-<td>로그인 실패 후 이동 페이지</td>
-</tr>
-<tr>
-<td>usernameParameter(<strong>String</strong> usernameParameter)</td>
-<td>아이디 파라미터명 설정</td>
-</tr>
-<tr>
-<td>passwordParameter(<strong>String</strong> passwordParameter)</td>
-<td>패스워드 파라미터명 설정</td>
-</tr>
-<tr>
-<td>loginProcessingUrl(<strong>String</strong> loginProcessingUrl)</td>
-<td>로그인 Form Action Url</td>
-</tr>
-<tr>
-<td>successHandler(<strong>AuthenticationSuccessHandler</strong> successHandler)</td>
-<td>로그인 성공 후 핸들러</td>
-</tr>
-<tr>
-<td>failureHandler(<strong>AuthenticationFailureHandler</strong> authenticationFailureHandler)</td>
-<td>로그인 실패 후 핸들러</td>
-</tr>
-</tbody></table>
-<br>
-
-<p><strong>Sample Code</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    http</span><br><span class="line">        .formLogin()</span><br><span class="line">        .loginPage(<span class="string">&quot;/login&quot;</span>)</span><br><span class="line">        .defaultSuccessUrl(<span class="string">&quot;/&quot;</span>)</span><br><span class="line">        .failureForwardUrl(<span class="string">&quot;/login&quot;</span>)</span><br><span class="line">        .usernameParameter(<span class="string">&quot;userId&quot;</span>)</span><br><span class="line">        .passwordParameter(<span class="string">&quot;password&quot;</span>)</span><br><span class="line">        .loginProcessingUrl(<span class="string">&quot;/login_proc&quot;</span>)</span><br><span class="line">        .successHandler((httpServletRequest, httpServletResponse, authentication) -&gt; &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;authentication &quot;</span> + authentication.getName());</span><br><span class="line">            httpServletResponse.sendRedirect(<span class="string">&quot;/&quot;</span>);</span><br><span class="line">        &#125;)</span><br><span class="line">        .failureHandler((httpServletRequest, httpServletResponse, e) -&gt; &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;exception : &quot;</span> + e.getMessage());</span><br><span class="line">            httpServletResponse.sendRedirect(<span class="string">&quot;/login&quot;</span>);</span><br><span class="line">        &#125;)</span><br><span class="line">        .permitAll();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<br>
-
-<p><strong>FormLogin 인증 프로세스</strong></p>
-<p><img src="../../image/spring-security/FormLogin.png"></p>
-<br>
-
-<p><strong>UsernamePasswordAuthenticationFilter</strong></p>
-<p><img src="../../image/spring-security/UsernamePasswordAuthenticationFilter.png"></p>
-<h2 id="08-인증-API-–-AnonymousAuthenticationFilter"><a href="#08-인증-API-–-AnonymousAuthenticationFilter" class="headerlink" title="08.인증 API – AnonymousAuthenticationFilter"></a>08.인증 API – AnonymousAuthenticationFilter</h2><hr>
-<p><img src="image/1-12.png"></p>
-<ul>
-<li>익명사용자 인증 처리 필터</li>
-<li>익명사용자와 인증 사용자를 구분해서 처리하기 위한 용도로 사용</li>
-<li>화면에서 인증 여부를 구현할 때 isAnonymous() 와 isAuthenticated() 로 구분해서 사용</li>
-<li>인증객체를 세션에 저장하지 않는다</li>
-</ul>
-<br>
-
-<h2 id="09-인증-API-–-동시-세션-제어"><a href="#09-인증-API-–-동시-세션-제어" class="headerlink" title="09.인증 API – 동시 세션 제어"></a>09.인증 API – 동시 세션 제어</h2><hr>
-<p><img src="image/1-13.png"></p>
-<h4 id="http-sessionManagement-세션-관리-기능이-작동함"><a href="#http-sessionManagement-세션-관리-기능이-작동함" class="headerlink" title="http.sessionManagement() : 세션 관리 기능이 작동함"></a>http.sessionManagement() : 세션 관리 기능이 작동함</h4><table>
-<thead>
-<tr>
-<th>Method</th>
-<th>내용</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>maximumSessions(<strong>int</strong> maximumSessions)</td>
-<td>최대 허용 가능 세션 수, <strong>-1</strong>: 무제한 로그인 세션 허용</td>
-</tr>
-<tr>
-<td>maxSessionsPreventsLogin(<strong>boolean</strong> maxSessionsPreventsLogin)</td>
-<td>동시 로그인 차단함, <strong>false</strong>: 기존 세션 만료(default)</td>
-</tr>
-<tr>
-<td>invalidSessionUrl(<strong>String</strong> invalidSessionUrl)</td>
-<td>세션이 유효하지 않을 때 이동 할 페이지</td>
-</tr>
-<tr>
-<td>expiredUrl(<strong>String</strong> expiredUrl)</td>
-<td>세션이 만료된 경우 이동 할 페이지</td>
-</tr>
-</tbody></table>
-<br>
-
-<p><strong>세션 고정 보호</strong></p>
-<p><img src="image/1-14.png"></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">	http.sessionManagement()</span><br><span class="line">                .sessionFixation().changeSessionId() <span class="comment">// 기본값</span></span><br><span class="line">				<span class="comment">// none, migrateSession, newSession</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th>Value</th>
-<th>내용</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>none</td>
-<td>session fix 하지 않음</td>
-</tr>
-<tr>
-<td>changeSessionId</td>
-<td>Session Id 변경(서블릿 3.1 이상, default)</td>
-</tr>
-<tr>
-<td>migrateSession</td>
-<td>Session Id 변경(서블릿 3.1 미만, default)</td>
-</tr>
-<tr>
-<td>newSession</td>
-<td>새로운 Session 생성</td>
-</tr>
-</tbody></table>
-<br>
-
-<h4 id="세션-정책"><a href="#세션-정책" class="headerlink" title="세션 정책"></a>세션 정책</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">	http.sessionManagement()</span><br><span class="line">                .sessionCreationPolicy(SessionCreationPolicy. If_Required )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th>Value</th>
-<th>내용</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>SessionCreationPolicy.Always</td>
-<td>스프링 시큐리티가 항상 세션 생성</td>
-</tr>
-<tr>
-<td>SessionCreationPolicy.If_Required</td>
-<td>스프링 시큐리티가 필요 시 생성(default)</td>
-</tr>
-<tr>
-<td>SessionCreationPolicy.Never</td>
-<td>스프링 시큐리티가 생성하지 않지만 이미 존재하면 사용</td>
-</tr>
-<tr>
-<td>SessionCreationPolicy.Stateless</td>
-<td>스프링 시큐리티가 생성하지 않고 존재해도 사용하지 않음(JWT 인증 토큰)</td>
-</tr>
-</tbody></table>
-<br>
-
-<p><strong>SessionManagementFilter</strong></p>
-<ol>
-<li>세션 관리<ul>
-<li>인증 시 사용자의 세션정보를 등록, 조회, 삭제 등의 세션 이력을 관리</li>
-</ul>
-</li>
-<li>동시적 세션 제어<ul>
-<li>동일 계정으로 접속이 허용되는 최대 세션수를 제한</li>
-</ul>
-</li>
-<li>세션 고정 보호<ul>
-<li>인증 할 때마다 세션쿠키를 새로 발급하여 공격자의 쿠키 조작을 방지</li>
-</ul>
-</li>
-<li>세션 생성 정책<ul>
-<li>Always, If_Required, Never, Stateless</li>
-</ul>
-</li>
-</ol>
-<p><strong>ConcurrentSessionFilter</strong></p>
-<ul>
-<li>매 요청 마다 현재 사용자의 세션 만료 여부 체크</li>
-<li>세션이 만료로 설정되었을 경우 즉시 만료 처리</li>
-<li>session.isExpired() == true<ul>
-<li>로그아웃 처리</li>
-<li>즉시 오류 페이지 응답</li>
-</ul>
-</li>
-</ul>
-<br>
-
-<p><strong>SessionManagementFilter, ConcurrentSessionFilter</strong></p>
-<p><img src="image/1-15.png"></p>
-<p><img src="image/1-16.png"></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/01/02/springsecurity/2.logout&RememberMe/#more" rel="contents">
+                더 읽어보기 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -840,16 +586,16 @@
       <span class="post-meta-item-icon">
         <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Posted on</span>
+      <span class="post-meta-item-text">작성일</span>
 
-      <time title="Created: 2021-01-01 00:00:00" itemprop="dateCreated datePublished" datetime="2021-01-01T00:00:00+09:00">2021-01-01</time>
+      <time title="Post created: 2021-01-01 00:00:00" itemprop="dateCreated datePublished" datetime="2021-01-01T00:00:00+09:00">2021-01-01</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-02-24 10:18:41" itemprop="dateModified" datetime="2021-02-24T10:18:41+09:00">2021-02-24</time>
+        <time title="Updated at: 2021-02-24 10:18:41" itemprop="dateModified" datetime="2021-02-24T10:18:41+09:00">2021-02-24</time>
       </span>
 
   
@@ -864,6 +610,14 @@
     <div class="post-body" itemprop="articleBody">
           <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/01/01/test2/#more" rel="contents">
+                더 읽어보기 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
