@@ -20,18 +20,24 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
 
 <meta name="hexo-config" content="{&quot;hostname&quot;:&quot;example.com&quot;,&quot;root&quot;:&quot;/&quot;,&quot;images&quot;:&quot;/images&quot;,&quot;scheme&quot;:&quot;Muse&quot;,&quot;version&quot;:&quot;8.3.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:false,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;Searching...&quot;,&quot;empty&quot;:&quot;We didn&#39;t find any results for the search: ${query}&quot;,&quot;hits_time&quot;:&quot;${hits} results found in ${time} ms&quot;,&quot;hits&quot;:&quot;${hits} results found&quot;}}">
-<meta name="description" content="Spring Security 인가 프로세스 구현1. 목표 DB와 연동하여 자원 및 권한을 설정하고 제어.  동적 권한 관리 관리자 시스템 구">
+<meta name="description" content="Spring Security 인가 프로세스 구현08.인증 API – AnonymousAuthenticationFilter   익명사용자 인증 처리 필터 익명사용자와 인증 사용자를 구분해서 처리하기 위한 용도로 사용 화면에서 인증 여부를 구현할 때 isAnonymous() 와 isAuthenticated() 로 구분해서 사용 인증객체를 세션에 저장하지 않는다">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hello World">
 <meta property="og:url" content="http://example.com/2021/01/02/spring-security-demo/index.html">
 <meta property="og:site_name" content="Aaron">
-<meta property="og:description" content="Spring Security 인가 프로세스 구현1. 목표 DB와 연동하여 자원 및 권한을 설정하고 제어.  동적 권한 관리 관리자 시스템 구">
+<meta property="og:description" content="Spring Security 인가 프로세스 구현08.인증 API – AnonymousAuthenticationFilter   익명사용자 인증 처리 필터 익명사용자와 인증 사용자를 구분해서 처리하기 위한 용도로 사용 화면에서 인증 여부를 구현할 때 isAnonymous() 와 isAuthenticated() 로 구분해서 사용 인증객체를 세션에 저장하지 않는다">
 <meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="http://example.com/2021/01/02/spring-security-demo/image/1-12.png">
+<meta property="og:image" content="http://example.com/2021/01/02/spring-security-demo/image/1-13.png">
+<meta property="og:image" content="http://example.com/2021/01/02/spring-security-demo/image/1-14.png">
+<meta property="og:image" content="http://example.com/2021/01/02/spring-security-demo/image/1-15.png">
+<meta property="og:image" content="http://example.com/2021/01/02/spring-security-demo/image/1-16.png">
 <meta property="article:published_time" content="2021-01-01T15:00:00.000Z">
-<meta property="article:modified_time" content="2021-02-24T07:08:37.462Z">
+<meta property="article:modified_time" content="2021-04-08T06:43:59.214Z">
 <meta property="article:author" content="aaron">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/01/02/spring-security-demo/image/1-12.png">
 
 
 <link rel="canonical" href="http://example.com/2021/01/02/spring-security-demo/">
@@ -118,7 +124,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Security-%EC%9D%B8%EA%B0%80-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EA%B5%AC%ED%98%84"><span class="nav-number">1.</span> <span class="nav-text">Spring Security 인가 프로세스 구현</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%EB%AA%A9%ED%91%9C"><span class="nav-number">1.1.</span> <span class="nav-text">1. 목표</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Security-%EC%9D%B8%EA%B0%80-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EA%B5%AC%ED%98%84"><span class="nav-number">1.</span> <span class="nav-text">Spring Security 인가 프로세스 구현</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#08-%EC%9D%B8%EC%A6%9D-API-%E2%80%93-AnonymousAuthenticationFilter"><span class="nav-number">2.</span> <span class="nav-text">08.인증 API – AnonymousAuthenticationFilter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#09-%EC%9D%B8%EC%A6%9D-API-%E2%80%93-%EB%8F%99%EC%8B%9C-%EC%84%B8%EC%85%98-%EC%A0%9C%EC%96%B4"><span class="nav-number">3.</span> <span class="nav-text">09.인증 API – 동시 세션 제어</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#http-sessionManagement-%EC%84%B8%EC%85%98-%EA%B4%80%EB%A6%AC-%EA%B8%B0%EB%8A%A5%EC%9D%B4-%EC%9E%91%EB%8F%99%ED%95%A8"><span class="nav-number">3.0.1.</span> <span class="nav-text">http.sessionManagement() : 세션 관리 기능이 작동함</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EC%84%B8%EC%85%98-%EC%A0%95%EC%B1%85"><span class="nav-number">3.0.2.</span> <span class="nav-text">세션 정책</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -131,7 +137,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">포스트</span>
         </a>
       </div>
@@ -214,7 +220,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Updated at: 2021-02-24 16:08:37" itemprop="dateModified" datetime="2021-02-24T16:08:37+09:00">2021-02-24</time>
+        <time title="Updated at: 2021-04-08 15:43:59" itemprop="dateModified" datetime="2021-04-08T15:43:59+09:00">2021-04-08</time>
       </span>
 
   
@@ -227,11 +233,136 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="Spring-Security-인가-프로세스-구현"><a href="#Spring-Security-인가-프로세스-구현" class="headerlink" title="Spring Security 인가 프로세스 구현"></a>Spring Security 인가 프로세스 구현</h2><h3 id="1-목표"><a href="#1-목표" class="headerlink" title="1. 목표"></a>1. 목표</h3><ul>
-<li>DB와 연동하여 자원 및 권한을 설정하고 제어. </li>
-<li>동적 권한 관리</li>
-<li>관리자 시스템 구 </li>
+        <h2 id="Spring-Security-인가-프로세스-구현"><a href="#Spring-Security-인가-프로세스-구현" class="headerlink" title="Spring Security 인가 프로세스 구현"></a>Spring Security 인가 프로세스 구현</h2><h2 id="08-인증-API-–-AnonymousAuthenticationFilter"><a href="#08-인증-API-–-AnonymousAuthenticationFilter" class="headerlink" title="08.인증 API – AnonymousAuthenticationFilter"></a>08.인증 API – AnonymousAuthenticationFilter</h2><hr>
+<p><img src="image/1-12.png"></p>
+<ul>
+<li>익명사용자 인증 처리 필터</li>
+<li>익명사용자와 인증 사용자를 구분해서 처리하기 위한 용도로 사용</li>
+<li>화면에서 인증 여부를 구현할 때 isAnonymous() 와 isAuthenticated() 로 구분해서 사용</li>
+<li>인증객체를 세션에 저장하지 않는다</li>
 </ul>
+<br>
+
+<h2 id="09-인증-API-–-동시-세션-제어"><a href="#09-인증-API-–-동시-세션-제어" class="headerlink" title="09.인증 API – 동시 세션 제어"></a>09.인증 API – 동시 세션 제어</h2><hr>
+<p><img src="image/1-13.png"></p>
+<h4 id="http-sessionManagement-세션-관리-기능이-작동함"><a href="#http-sessionManagement-세션-관리-기능이-작동함" class="headerlink" title="http.sessionManagement() : 세션 관리 기능이 작동함"></a>http.sessionManagement() : 세션 관리 기능이 작동함</h4><table>
+<thead>
+<tr>
+<th>Method</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>maximumSessions(<strong>int</strong> maximumSessions)</td>
+<td>최대 허용 가능 세션 수, <strong>-1</strong>: 무제한 로그인 세션 허용</td>
+</tr>
+<tr>
+<td>maxSessionsPreventsLogin(<strong>boolean</strong> maxSessionsPreventsLogin)</td>
+<td>동시 로그인 차단함, <strong>false</strong>: 기존 세션 만료(default)</td>
+</tr>
+<tr>
+<td>invalidSessionUrl(<strong>String</strong> invalidSessionUrl)</td>
+<td>세션이 유효하지 않을 때 이동 할 페이지</td>
+</tr>
+<tr>
+<td>expiredUrl(<strong>String</strong> expiredUrl)</td>
+<td>세션이 만료된 경우 이동 할 페이지</td>
+</tr>
+</tbody></table>
+<br>
+
+<p><strong>세션 고정 보호</strong></p>
+<p><img src="image/1-14.png"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">	http.sessionManagement()</span><br><span class="line">                .sessionFixation().changeSessionId() <span class="comment">// 기본값</span></span><br><span class="line">				<span class="comment">// none, migrateSession, newSession</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>none</td>
+<td>session fix 하지 않음</td>
+</tr>
+<tr>
+<td>changeSessionId</td>
+<td>Session Id 변경(서블릿 3.1 이상, default)</td>
+</tr>
+<tr>
+<td>migrateSession</td>
+<td>Session Id 변경(서블릿 3.1 미만, default)</td>
+</tr>
+<tr>
+<td>newSession</td>
+<td>새로운 Session 생성</td>
+</tr>
+</tbody></table>
+<br>
+
+<h4 id="세션-정책"><a href="#세션-정책" class="headerlink" title="세션 정책"></a>세션 정책</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">	http.sessionManagement()</span><br><span class="line">                .sessionCreationPolicy(SessionCreationPolicy. If_Required )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SessionCreationPolicy.Always</td>
+<td>스프링 시큐리티가 항상 세션 생성</td>
+</tr>
+<tr>
+<td>SessionCreationPolicy.If_Required</td>
+<td>스프링 시큐리티가 필요 시 생성(default)</td>
+</tr>
+<tr>
+<td>SessionCreationPolicy.Never</td>
+<td>스프링 시큐리티가 생성하지 않지만 이미 존재하면 사용</td>
+</tr>
+<tr>
+<td>SessionCreationPolicy.Stateless</td>
+<td>스프링 시큐리티가 생성하지 않고 존재해도 사용하지 않음(JWT 인증 토큰)</td>
+</tr>
+</tbody></table>
+<br>
+
+<p><strong>SessionManagementFilter</strong></p>
+<ol>
+<li>세션 관리<ul>
+<li>인증 시 사용자의 세션정보를 등록, 조회, 삭제 등의 세션 이력을 관리</li>
+</ul>
+</li>
+<li>동시적 세션 제어<ul>
+<li>동일 계정으로 접속이 허용되는 최대 세션수를 제한</li>
+</ul>
+</li>
+<li>세션 고정 보호<ul>
+<li>인증 할 때마다 세션쿠키를 새로 발급하여 공격자의 쿠키 조작을 방지</li>
+</ul>
+</li>
+<li>세션 생성 정책<ul>
+<li>Always, If_Required, Never, Stateless</li>
+</ul>
+</li>
+</ol>
+<p><strong>ConcurrentSessionFilter</strong></p>
+<ul>
+<li>매 요청 마다 현재 사용자의 세션 만료 여부 체크</li>
+<li>세션이 만료로 설정되었을 경우 즉시 만료 처리</li>
+<li>session.isExpired() == true<ul>
+<li>로그아웃 처리</li>
+<li>즉시 오류 페이지 응답</li>
+</ul>
+</li>
+</ul>
+<br>
+
+<p><strong>SessionManagementFilter, ConcurrentSessionFilter</strong></p>
+<p><img src="image/1-15.png"></p>
+<p><img src="image/1-16.png"></p>
 
     </div>
 
@@ -248,13 +379,13 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/01/02/springsecurity/1.httpBasic&FormLogin/" rel="prev" title="Spring Security 기본 API와 Filter - (1)">
-                  <i class="fa fa-chevron-left"></i> Spring Security 기본 API와 Filter - (1)
+                <a href="/2021/01/02/springsecurity/2.logout&RememberMe/" rel="prev" title="Spring Security 기본 API와 Filter - (2)">
+                  <i class="fa fa-chevron-left"></i> Spring Security 기본 API와 Filter - (2)
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/04/08/hello-world/" rel="next" title="Hello World">
-                  Hello World <i class="fa fa-chevron-right"></i>
+                <a href="/2021/01/03/springsecurity/2.FormLogin/" rel="next" title="FormLogin 인증과 UsernamePasswordAuthenticationFilter">
+                  FormLogin 인증과 UsernamePasswordAuthenticationFilter <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
